@@ -1,0 +1,2 @@
+class EveningroutineproductsController < ApplicationController
+end
