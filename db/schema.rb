@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2019_11_01_142531) do
 
   create_table "routines", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.string "type"
+    t.string "routine_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_routines_on_user_id"
