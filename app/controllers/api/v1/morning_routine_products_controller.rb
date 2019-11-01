@@ -6,6 +6,7 @@ class Api::V1::MorningRoutineProductsController < ApplicationController
 
     def create 
         morning_routine_product = MorningRoutineProduct.create(morning_routine_product_params)
+        # product = Product.find_or_create_by(morning_routine_product_params[:product_id])
         render json: morning_routine_product 
     end 
 
