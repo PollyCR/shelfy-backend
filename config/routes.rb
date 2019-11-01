@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   namespace :api do
       namespace :v1 do
           resources :users
+          resources :brands
           resources :morning_routines 
           resources :morning_routine_products 
           resources :evening_routines 
