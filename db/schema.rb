@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_01_142531) do
+ActiveRecord::Schema.define(version: 2019_11_02_153901) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,36 @@ ActiveRecord::Schema.define(version: 2019_11_01_142531) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "diaries", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.bigint "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_entries_on_list_id"
+  end
+
+  create_table "list_products", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.bigint "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_list_products_on_list_id"
+    t.index ["product_id"], name: "index_list_products_on_product_id"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -63,6 +93,11 @@ ActiveRecord::Schema.define(version: 2019_11_01_142531) do
   end
 
   add_foreign_key "active_ingredients", "products"
+  add_foreign_key "diaries", "users"
+  add_foreign_key "entries", "lists"
+  add_foreign_key "list_products", "lists"
+  add_foreign_key "list_products", "products"
+  add_foreign_key "lists", "users"
   add_foreign_key "products", "brands"
   add_foreign_key "routine_products", "products"
   add_foreign_key "routine_products", "routines"
