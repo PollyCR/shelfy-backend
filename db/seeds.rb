@@ -20,4 +20,4 @@ Brand.destroy_all
 
 User.create({display_name: "Polly", email_address: "polly.c.reynolds@gmail.com", password: "Fl0rence!"})
 brands = Brand.create([{name: "Glossier"}, {name:"Drunk Elephant"}, {name:"Sunday Riley"}, {name: "REN"}, {name: "Charlotte Tilbury"}, {name: "The Ordinary"}])
-Product.create([{name:"Futuredew", brand_id:1}])
+Product.create([{name:"Futuredew", product_type: "Serum", brand_id:1}])

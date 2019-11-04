@@ -9,6 +9,7 @@ Rails.application.routes.draw do
           resources :diaries
           resources :lists 
           resources :comments 
+          resources :products
 
           post "/signup", to: "users#create"
           post '/login', to: 'authentication#create'

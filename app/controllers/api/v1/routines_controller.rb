@@ -15,7 +15,7 @@ class Api::V1::RoutinesController < ApplicationController
     private
 
     def routine_params
-        params.require(:routine).permit(:user_id, :routine_type)
+        params.require(:routine).permit(:user_id, :routine_type, :routine_products)
     end 
 
 end

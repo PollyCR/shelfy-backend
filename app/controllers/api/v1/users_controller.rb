@@ -3,6 +3,7 @@ class Api::V1::UsersController < ApplicationController
 
     def create
         user = User.create(user_params)
+        routines = Routine.create([{user_id: params[:user_id], routine_type: "am"},{user_id: params[:user_id], routine_type: "pm"},{user_id: params[:user_id], routine_type: "treatment"} ])
         if user.valid?
             render json: { token: encode_token({user_id: user.id}), user: UserSerializer.new(user) }
         else

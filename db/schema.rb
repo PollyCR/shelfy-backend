@@ -70,6 +70,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_082444) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.bigint "brand_id", null: false
+    t.string "product_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_082444) do
   create_table "routine_products", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "routine_id", null: false
+    t.string "product_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_routine_products_on_product_id"

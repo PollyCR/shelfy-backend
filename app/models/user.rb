@@ -16,6 +16,6 @@ class User < ApplicationRecord
         routine_products ? routine_products.select{|rp| rp.routine.type == "PM"}.map{|rp| rp.product} :  null
     end
     def treatment_products
-        routine_products ? routine_products.select{|rp| rp.routine.type == "treat"}.map{|rp| rp.product} : null
+        routine_products ? routine_products.select{|rp| rp.routine.type == "treatment"}.map{|rp| rp.product} : null
     end
 end
