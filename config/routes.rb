@@ -5,6 +5,10 @@ Rails.application.routes.draw do
           resources :brands
           resources :routines 
           resources :routine_products
+          resources :list_products 
+          resources :diaries
+          resources :lists 
+          resources :comments 
 
           post "/signup", to: "users#create"
           post '/login', to: 'authentication#create'

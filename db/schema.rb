@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_02_153901) do
+ActiveRecord::Schema.define(version: 2019_11_04_082444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,13 @@ ActiveRecord::Schema.define(version: 2019_11_02_153901) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.bigint "routine_product_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["routine_product_id"], name: "index_comments_on_routine_product_id"
   end
 
   create_table "diaries", force: :cascade do |t|
@@ -46,6 +53,7 @@ ActiveRecord::Schema.define(version: 2019_11_02_153901) do
   create_table "list_products", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "list_id", null: false
+    t.boolean "purchased"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["list_id"], name: "index_list_products_on_list_id"
@@ -93,6 +101,7 @@ ActiveRecord::Schema.define(version: 2019_11_02_153901) do
   end
 
   add_foreign_key "active_ingredients", "products"
+  add_foreign_key "comments", "routine_products"
   add_foreign_key "diaries", "users"
   add_foreign_key "entries", "lists"
   add_foreign_key "list_products", "lists"

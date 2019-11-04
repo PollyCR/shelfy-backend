@@ -1,3 +1,3 @@
 class RoutineProductSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :product_id, :routine_id
 end
