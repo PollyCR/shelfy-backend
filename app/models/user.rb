@@ -10,12 +10,12 @@ class User < ApplicationRecord
     has_many :comments, through: :routines
 
     def morning_products
-       routine_products ? routine_products.select{|rp| rp.routine.type == "AM"}.map{|rp| rp.product} : null
+       routine_products ? routine_products.select{|rp| rp.routine.routine_type == "am"}.map{|rp| rp.product} : null
     end
     def evening_products
-        routine_products ? routine_products.select{|rp| rp.routine.type == "PM"}.map{|rp| rp.product} :  null
+        routine_products ? routine_products.select{|rp| rp.routine.routine_type == "pm"}.map{|rp| rp.product} :  null
     end
     def treatment_products
-        routine_products ? routine_products.select{|rp| rp.routine.type == "treatment"}.map{|rp| rp.product} : null
+        routine_products ? routine_products.select{|rp| rp.routine.routine_type == "treatment"}.map{|rp| rp.product} : null
     end
 end

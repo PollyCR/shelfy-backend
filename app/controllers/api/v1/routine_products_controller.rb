@@ -7,6 +7,7 @@ class Api::V1::RoutineProductsController < ApplicationController
         active_ingredients = params[:active_ingredients].split(",").map{|ingredient|ActiveIngredient.find_or_create_by(product_id: product.id, name: ingredient).id}
         routine = Routine.find_or_create_by(routine_type: params[:routine], user_id: params[:id])
         routine_product = RoutineProduct.find_or_create_by(product_id: product.id, routine_id: routine.id)
+        # byebug
         render json: routine_product
     end 
 
@@ -16,8 +17,11 @@ class Api::V1::RoutineProductsController < ApplicationController
     end 
 
     def destroy 
-        routine_product = RoutineProduct.find_by(params[:id])
+        # byebug
+        routine_product = RoutineProduct.find_by(product_id: params[:id])
+        # byebug
         routine_product.destroy 
+# RoutineProduct.destroy(params[:id])
     end 
 
 
