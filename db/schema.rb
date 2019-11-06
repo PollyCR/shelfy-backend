@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_04_082444) do
+ActiveRecord::Schema.define(version: 2019_11_05_182304) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,10 +44,12 @@ ActiveRecord::Schema.define(version: 2019_11_04_082444) do
   end
 
   create_table "entries", force: :cascade do |t|
-    t.bigint "list_id", null: false
+    t.bigint "diary_id", null: false
+    t.text "routine_type"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["list_id"], name: "index_entries_on_list_id"
+    t.index ["diary_id"], name: "index_entries_on_diary_id"
   end
 
   create_table "list_products", force: :cascade do |t|
@@ -105,7 +107,7 @@ ActiveRecord::Schema.define(version: 2019_11_04_082444) do
   add_foreign_key "active_ingredients", "products"
   add_foreign_key "comments", "routine_products"
   add_foreign_key "diaries", "users"
-  add_foreign_key "entries", "lists"
+  add_foreign_key "entries", "diaries"
   add_foreign_key "list_products", "lists"
   add_foreign_key "list_products", "products"
   add_foreign_key "lists", "users"

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
           resources :lists 
           resources :comments 
           resources :products
+          resources :entries
 
           post "/signup", to: "users#create"
           post '/login', to: 'authentication#create'
