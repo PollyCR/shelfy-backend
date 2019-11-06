@@ -5,7 +5,9 @@ class UserSerializer < ActiveModel::Serializer
   has_many :products, through: :routine_products
   has_many :diaries 
   has_many :entries, through: :diaries 
-  has_many :comments, through: :routines
+  has_many :lists
+  has_many :list_products, through: :lists
+  # has_many :comments, through: :routines
 
   
 end

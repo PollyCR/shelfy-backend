@@ -13,7 +13,7 @@ class Api::V1::EntriesController < ApplicationController
 
     def destroy 
         # byebug
-        entry = Entry.find(:id)
+        entry = Entry.find_by(id: params[:id])
         # byebug
         entry.destroy 
 # RoutineProduct.destroy(params[:id])

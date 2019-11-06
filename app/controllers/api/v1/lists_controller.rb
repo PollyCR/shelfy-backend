@@ -5,15 +5,11 @@ class Api::V1::ListsController < ApplicationController
     end 
 
     def create 
-        list = List.find_or_create_by(list_params)
-        render json: list.serializable_hash
+        # byebug
+        list = List.find_or_create_by(user_id: params)
+        render json: list
     end 
 
 
-    private
-
-    def list_params
-        params.require(:list).permit(:user_id, :id)
-    end 
 
 end

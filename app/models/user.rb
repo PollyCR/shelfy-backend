@@ -8,6 +8,8 @@ class User < ApplicationRecord
     has_many :diaries 
     has_many :entries, through: :diaries 
     has_many :comments, through: :routines
+    has_many :lists
+    has_many :list_products, through: :lists
 
     def morning_products
        routine_products ? routine_products.select{|rp| rp.routine.routine_type == "am"}.map{|rp| rp.product} : null
@@ -18,4 +20,5 @@ class User < ApplicationRecord
     def treatment_products
         routine_products ? routine_products.select{|rp| rp.routine.routine_type == "treatment"}.map{|rp| rp.product} : null
     end
+
 end
