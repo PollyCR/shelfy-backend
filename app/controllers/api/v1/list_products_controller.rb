@@ -18,7 +18,7 @@ class Api::V1::ListProductsController < ApplicationController
         # byebug
         list_product = ListProduct.find_by(product_id: params[:id])
         # byebug
-        list_product.destroy 
+        list_product.destroy
 # listProduct.destroy(params[:id])
     end 
 end
