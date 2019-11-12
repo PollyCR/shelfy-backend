@@ -6,7 +6,7 @@ class Api::V1::AuthenticationController < ApplicationController
         if user && user.authenticate(login_params[:password])
             render json: { token: encode_token({user_id: user.id}), user: UserSerializer.new(user) }
         else
-            render json: { errors: ["OOops login credentials not valid"] }, status: :not_found
+            render json: { error: ["login credentials not valid"] }, status: :not_found
         end
     end
 
