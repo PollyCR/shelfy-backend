@@ -4,9 +4,9 @@ class Api::V1::AuthenticationController < ApplicationController
     def create
         user = User.find_by(email_address: login_params[:email_address])
         if user && user.authenticate(login_params[:password])
-            render json: { token: encode_token({user_id: user.id}), user: UserSerializer.new(user) }
+            render json: { token: encode_token({user_id: user.id}), user: UserSerializer.new(user) }, status: :accepted
         else
-            render json: { error: ["login credentials not valid"] }, status: :not_found
+            render json: { message: ["login credentials not valid"] }, status: :not_found
         end
     end
 
