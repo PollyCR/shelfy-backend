@@ -29,13 +29,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_182304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "comments", force: :cascade do |t|
-    t.bigint "routine_product_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["routine_product_id"], name: "index_comments_on_routine_product_id"
-  end
-
   create_table "diaries", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -47,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_11_05_182304) do
     t.bigint "diary_id", null: false
     t.text "routine_type"
     t.text "content"
+    t.integer "skin_score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["diary_id"], name: "index_entries_on_diary_id"
@@ -105,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_11_05_182304) do
   end
 
   add_foreign_key "active_ingredients", "products"
-  add_foreign_key "comments", "routine_products"
   add_foreign_key "diaries", "users"
   add_foreign_key "entries", "diaries"
   add_foreign_key "list_products", "lists"

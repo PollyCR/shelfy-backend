@@ -10,7 +10,6 @@ ListProduct.destroy_all
 ActiveIngredient.destroy_all 
 Entry.destroy_all 
 Diary.destroy_all 
-Comment.destroy_all
 Routine.destroy_all 
 Product.destroy_all 
 List.destroy_all

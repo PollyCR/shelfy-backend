@@ -2,7 +2,7 @@ class Api::V1::EntriesController < ApplicationController
     def create 
         # byebug
        diary = Diary.find_or_create_by(user_id: params[:user])
-       entry = Entry.create({diary_id: diary.id, content: params[:entry], routine_type: params[:routine]})
+       entry = Entry.create({diary_id: diary.id, content: params[:entry], skin_score: params[:skin_score], routine_type: params[:routine]})
         render json: entry
     end 
 
