@@ -1,5 +1,10 @@
 class ApplicationController < ActionController::API
     before_action :set_current_user
+    before_action :set_cors_header
+
+    def set_cors_header
+        response.set_header('Access-Control-Allow-Origin', '*')
+    end
 
     def encode_token(payload)
         JWT.encode(payload, ENV['RAILS_SECRET'])
